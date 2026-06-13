@@ -74,6 +74,10 @@ common:
     url: rate-limits/betterworks-rate-limits.yml
   - type: FinOps
     url: finops/betterworks-finops.yml
+  - type: BlogPosts
+    url: blogs/blogs.json
+  - type: JsonLdContext
+    url: json-ld/betterworks-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

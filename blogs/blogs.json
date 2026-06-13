@@ -1,0 +1,40 @@
+{
+  "aid": "betterworks",
+  "name": "BetterWorks Blog",
+  "description": "Blog posts from BetterWorks covering performance management, OKRs, HR technology, and workforce development.",
+  "url": "https://www.betterworks.com/magazine/",
+  "created": "2026-06-13",
+  "modified": "2026-06-13",
+  "posts": [
+    {
+      "title": "What HR Leaders Should Stop Doing Before Funding a Talent Transformation",
+      "url": "https://www.betterworks.com/magazine/what-hr-leaders-should-stop-doing-before-funding-a-talent-transformation",
+      "date": "2026-06-10",
+      "tags": ["HR", "Talent Management", "Transformation"]
+    },
+    {
+      "title": "Why HR Leaders Move Performance Management from Workday to Betterworks",
+      "url": "https://www.betterworks.com/magazine/why-hr-leaders-switch-from-workday-to-betterworks",
+      "date": "2026-06-10",
+      "tags": ["Performance Management", "Workday", "Integration"]
+    },
+    {
+      "title": "Betterworks Recognized on TIME's List of America's Top WorkTech Companies 2026",
+      "url": "https://www.betterworks.com/magazine/betterworks-recognized-on-times-list-of-americas-top-worktech-companies-2026",
+      "date": "2026-06-09",
+      "tags": ["Awards", "WorkTech", "Recognition"]
+    },
+    {
+      "title": "Why HR Leaders Are Switching from Culture Amp to Betterworks for Performance Management",
+      "url": "https://www.betterworks.com/magazine/why-hr-leaders-switch-from-culture-amp-to-betterworks",
+      "date": "2026-05-01",
+      "tags": ["Performance Management", "Culture Amp", "HR"]
+    },
+    {
+      "title": "CEO Doug Dennerline on Why Betterworks Acquired Rypple — and What It Means for the Future of Managing",
+      "url": "https://www.betterworks.com/magazine/why-betterworks-acquired-rypple",
+      "date": "2026-05-01",
+      "tags": ["Acquisition", "Rypple", "Leadership", "Product"]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aid": "betterworks",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "betterworks": "https://developers.betterworks.com/vocabulary#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "Goal": {
+      "@id": "betterworks:Goal",
+      "@type": "schema:Thing",
+      "comment": "An OKR-based goal or objective within BetterWorks, owned by an employee or team."
+    },
+    "Milestone": {
+      "@id": "betterworks:Milestone",
+      "@type": "schema:Thing",
+      "comment": "A measurable key result or sub-goal within a BetterWorks Goal."
+    },
+    "CheckIn": {
+      "@id": "betterworks:CheckIn",
+      "@type": "schema:Action",
+      "comment": "A periodic progress update on a Goal or Milestone."
+    },
+    "Feedback": {
+      "@id": "betterworks:Feedback",
+      "@type": "schema:Action",
+      "comment": "Qualitative or structured feedback given to an employee in BetterWorks."
+    },
+    "Recognition": {
+      "@id": "betterworks:Recognition",
+      "@type": "schema:Action",
+      "comment": "A recognition event acknowledging an employee's achievement or contribution."
+    },
+    "PerformanceRating": {
+      "@id": "betterworks:PerformanceRating",
+      "@type": "schema:Rating",
+      "comment": "A formal performance rating assigned to an employee during calibration or review."
+    },
+    "CalibrationData": {
+      "@id": "betterworks:CalibrationData",
+      "@type": "schema:Thing",
+      "comment": "Aggregated performance data used in calibration sessions for fair employee evaluation."
+    },
+    "Employee": {
+      "@id": "schema:Person",
+      "comment": "An employee or workforce member tracked within BetterWorks."
+    },
+    "Team": {
+      "@id": "schema:Organization",
+      "comment": "A group of employees sharing common goals or reporting structures in BetterWorks."
+    },
+    "progress": {
+      "@id": "betterworks:progress",
+      "@type": "xsd:decimal",
+      "comment": "Percentage completion of a Goal or Milestone."
+    },
+    "owner": {
+      "@id": "betterworks:owner",
+      "@type": "@id",
+      "comment": "The employee who owns a Goal or Milestone."
+    },
+    "dueDate": {
+      "@id": "betterworks:dueDate",
+      "@type": "xsd:date",
+      "comment": "The target completion date for a Goal or Milestone."
+    },
+    "status": {
+      "@id": "betterworks:status",
+      "comment": "The current status of a Goal: on_track, at_risk, behind, or completed."
+    },
+    "period": {
+      "@id": "betterworks:period",
+      "comment": "The performance period (e.g., Q1 2026) associated with a Goal."
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "comment": "Categorical labels associated with a Goal or entity."
+    }
+  },
+  "@graph": [
+    {
+      "@id": "betterworks:BetterWorksAPI",
+      "@type": "schema:WebAPI",
+      "name": "BetterWorks API",
+      "description": "The BetterWorks REST API enables programmatic access to goals, milestones, employee data, feedback, recognition, calibration data, and performance ratings.",
+      "url": "https://developers.betterworks.com/",
+      "schema:documentation": "https://developers.betterworks.com/documentation/",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "name": "BetterWorks",
+        "url": "https://www.betterworks.com/",
+        "schema:sameAs": [
+          "https://www.linkedin.com/company/betterworks",
+          "https://x.com/betterworks",
+          "https://github.com/BetterWorks"
+        ]
+      }
+    }
+  ]
+}
