@@ -1,0 +1,34 @@
+name: BetterWorks API Rate Limits
+description: >-
+  BetterWorks does not publicly document specific rate limit thresholds for its
+  REST API. API access is provided to enterprise customers through API keys
+  managed via the BetterWorks Admin portal. Rate limit details are available
+  through direct engagement with the BetterWorks API team or customer success
+  manager. Contact api@betterworks.com for rate limit information specific to
+  your account tier.
+specificationVersion: '0.1'
+url: https://developers.betterworks.com/support/
+rateLimits:
+  - name: API Key Rate Limit
+    description: >-
+      Rate limits are enforced per API key issued through the BetterWorks Admin
+      portal. Specific thresholds are not publicly disclosed and are negotiated
+      as part of enterprise contracts.
+    scope: Per API Key
+    limit: Not publicly disclosed
+    window: Not publicly disclosed
+    enforcement: API key-level enforcement applied server-side
+    contactForDetails: api@betterworks.com
+authentication:
+  - type: API Key
+    description: >-
+      All API requests require a secret API token included in every request.
+      API keys are managed through the BetterWorks Admin portal and are
+      provisioned by BetterWorks upon customer request.
+    managementUrl: https://developers.betterworks.com/support/
+notes:
+  - All API responses return JSON including error responses.
+  - API keys are scoped to a specific BetterWorks account or tenant.
+  - For preview environment access, contact your program lead to obtain a key.
+  - Production API access is available to customers with enterprise contracts
+    that include Robust API entitlement.

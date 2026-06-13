@@ -1,0 +1,84 @@
+name: BetterWorks Plans and Pricing
+description: >-
+  BetterWorks offers two enterprise pricing tiers — Mid-Market and Enterprise —
+  both with custom pricing based on organization size. All plans include robust
+  API access. Pricing is not publicly listed and requires contacting sales.
+specificationVersion: '0.1'
+url: https://www.betterworks.com/plans
+plans:
+  - name: Mid-Market
+    description: >-
+      Modern performance management software essentials for organizations
+      starting at 500 employees. Includes core BetterWorks Foundation features,
+      Talent Intelligence, and API access.
+    minimumSeats: 500
+    pricing: Custom
+    pricingModel: Per Employee / Custom Quote
+    pricingUrl: https://www.betterworks.com/plans
+    features:
+      - name: Conversations
+        description: Structured 1:1 and team conversation tools for continuous feedback.
+      - name: Feedback and Recognition
+        description: Peer and manager feedback with recognition capabilities.
+      - name: Goal Setting
+        description: OKR-based goal setting with alignment across teams and departments.
+      - name: HR and Manager Insights
+        description: Analytics dashboards for HR leaders and managers.
+      - name: Integrations
+        description: Pre-built integrations with HRIS, SSO, and enterprise tools.
+      - name: Meetings
+        description: Meeting agenda and notes linked to goals and conversations.
+      - name: Employee Engagement
+        description: Engagement surveys and pulse checks.
+      - name: Unified Talent Profile
+        description: AI-powered talent profiles aggregating performance data.
+      - name: Skills Intelligence
+        description: AI-inferred skills mapping across the organization.
+      - name: Calibration
+        description: Performance calibration tools including 9-box positioning.
+      - name: Succession and Talent Mobility Planning
+        description: Tools for succession planning and internal mobility.
+      - name: Robust APIs
+        description: REST API access for programmatic integration with external systems.
+      - name: Localization
+        description: Multi-language and regional support.
+      - name: Certified Security
+        description: Enterprise-grade security and compliance certifications.
+      - name: Program Design
+        description: Professional services for implementation and program design.
+      - name: Ongoing Customer Support
+        description: Dedicated support channels and resources.
+      - name: Live and On-demand Training
+        description: Training resources for administrators and end users.
+      - name: Designated Customer Success Manager
+        description: Named CSM for ongoing partnership and adoption guidance.
+  - name: Enterprise
+    description: >-
+      Comprehensive, holistic enterprise performance management for organizations
+      starting at 2,500 employees. Includes all Mid-Market features plus
+      Signature Support Services and Change Management Services.
+    minimumSeats: 2500
+    pricing: Custom
+    pricingModel: Per Employee / Custom Quote
+    pricingUrl: https://www.betterworks.com/plans
+    features:
+      - name: All Mid-Market Features
+        description: Includes every feature available in the Mid-Market plan.
+      - name: Signature Support Services
+        description: Premium support with dedicated escalation paths and SLAs.
+      - name: Change Management Services
+        description: >-
+          Structured change management assistance for large-scale deployments.
+  - name: Employee Engagement Standalone
+    description: >-
+      A standalone employee engagement module for organizations that want
+      engagement surveys and pulse checks without the full performance
+      management suite.
+    pricing: Custom
+    pricingModel: Custom Quote
+    pricingUrl: https://www.betterworks.com/plans
+    features:
+      - name: Employee Engagement Surveys
+        description: Configurable engagement surveys with analytics.
+      - name: Pulse Checks
+        description: Lightweight pulse surveys for ongoing sentiment tracking.

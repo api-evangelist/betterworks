@@ -1,0 +1,75 @@
+name: BetterWorks FinOps
+description: >-
+  Financial operations guidance for BetterWorks API and platform consumption.
+  BetterWorks uses a custom enterprise pricing model billed per employee per
+  year with no publicly listed unit costs. All financial commitments are
+  negotiated through sales and governed by annual or multi-year contracts.
+  There is no metered or consumption-based API pricing; API access is bundled
+  into the enterprise subscription.
+specificationVersion: '1.0'
+framework: FinOps Framework
+focusVersion: '1.0'
+currency: USD
+billingModel: Annual Enterprise Contract
+pricingTransparency: Opaque — requires sales engagement for pricing
+costAllocation:
+  - dimension: Per Employee
+    description: >-
+      Costs are allocated on a per-employee basis across the organization.
+      Minimum thresholds apply: 500 employees for Mid-Market, 2,500 for
+      Enterprise.
+  - dimension: Plan Tier
+    description: >-
+      Mid-Market and Enterprise tiers carry different cost structures based on
+      included services and support levels.
+  - dimension: Professional Services
+    description: >-
+      Program design, change management, and signature support services may
+      carry separate or bundled cost structures within the contract.
+budgetingGuidance:
+  - item: Seat Count Forecasting
+    description: >-
+      Budget for BetterWorks based on expected headcount. Costs scale with
+      employee count, so workforce growth should be factored into annual budgets.
+  - item: Multi-Year Discounts
+    description: >-
+      Enterprise customers typically negotiate multi-year agreements to lock in
+      pricing and obtain volume discounts. Engage BetterWorks sales early in the
+      budget cycle.
+  - item: Professional Services Budget
+    description: >-
+      Reserve budget for implementation, program design, and ongoing change
+      management services, especially for Enterprise deployments.
+  - item: API Integration Costs
+    description: >-
+      API access is bundled with enterprise subscriptions at no additional
+      metered cost. Budget for internal engineering time to build and maintain
+      integrations.
+costOptimization:
+  - practice: Right-size Seat Count
+    description: >-
+      Review active user counts periodically. BetterWorks contracts are
+      typically seat-based; reducing unused seats at renewal can lower costs.
+  - practice: Leverage Native Integrations
+    description: >-
+      Use BetterWorks pre-built HRIS and SSO integrations before building
+      custom API integrations to reduce engineering costs.
+  - practice: Consolidate Plans
+    description: >-
+      If using the Employee Engagement Standalone plan, evaluate whether
+      upgrading to a full Mid-Market or Enterprise plan provides better value
+      by consolidating vendor spend.
+  - practice: Negotiate Multi-Year Terms
+    description: >-
+      Multi-year commitments typically unlock better per-seat pricing compared
+      to annual renewals.
+visibility:
+  invoicing: Annual invoice issued by BetterWorks upon contract signing.
+  usage: Usage dashboards available via the BetterWorks Admin portal for
+    active user counts, engagement metrics, and API usage.
+  reporting: HR and Manager Insights dashboards provide utilization data
+    that can inform ROI reporting to finance stakeholders.
+contacts:
+  sales: https://www.betterworks.com/plans
+  support: https://support.betterworks.com/
+  api: api@betterworks.com
