@@ -1,16 +1,14 @@
 aid: betterworks
 name: BetterWorks
-description: >-
-  BetterWorks is an enterprise continuous performance management platform that
-  enables organizations to align, develop, and engage their workforce through
-  OKR-based goal setting, check-ins, feedback, and calibration. The platform
-  provides a REST API allowing developers to programmatically access and update
-  goals, employee data, feedback, recognition, and performance ratings. API
-  access supports integration with business-critical applications to automate
-  progress tracking and synchronize workforce data across enterprise systems.
-  BetterWorks serves mid-market and enterprise organizations starting at 500
-  employees, with robust API and integration capabilities included across all
-  plans.
+description: BetterWorks is an enterprise continuous performance management platform
+  that enables organizations to align, develop, and engage their workforce through
+  OKR-based goal setting, check-ins, feedback, and calibration. The platform provides
+  a REST API allowing developers to programmatically access and update goals, employee
+  data, feedback, recognition, and performance ratings. API access supports integration
+  with business-critical applications to automate progress tracking and synchronize
+  workforce data across enterprise systems. BetterWorks serves mid-market and enterprise
+  organizations starting at 500 employees, with robust API and integration capabilities
+  included across all plans.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/betterworks/refs/heads/main/apis.yml
@@ -18,66 +16,67 @@ created: 2026-06-13
 modified: 2026-06-13
 specificationVersion: '0.19'
 tags:
-  - OKR
-  - Performance Management
-  - Goals
-  - Employee Data
-  - HR
-  - Enterprise
-  - Feedback
-  - Check-ins
-  - Continuous Performance
-  - People Analytics
+- OKR
+- Performance Management
+- Goals
+- Employee Data
+- HR
+- Enterprise
+- Feedback
+- Check-ins
+- Continuous Performance
+- People Analytics
 apis:
-  - aid: betterworks:betterworks-api
-    name: BetterWorks API
-    description: >-
-      The BetterWorks REST API enables programmatic access to goals, milestones,
-      employee data, feedback, recognition, calibration data, and performance
-      ratings. Developers can retrieve complete goal details including owners,
-      comments, and progress, as well as automatically push real-time updates
-      from external enterprise applications into BetterWorks.
-    humanURL: https://developers.betterworks.com/
-    baseURL: https://app.betterworks.com/services/core
-    tags:
-      - Goals
-      - OKR
-      - Employee Data
-      - Feedback
-      - Calibration
-      - Performance Ratings
-    properties:
-      - type: Documentation
-        url: https://developers.betterworks.com/documentation/
-      - type: Support
-        url: https://developers.betterworks.com/support/
-common:
-  - type: Website
-    url: https://www.betterworks.com/
+- aid: betterworks:betterworks-api
+  name: BetterWorks API
+  description: The BetterWorks REST API enables programmatic access to goals, milestones,
+    employee data, feedback, recognition, calibration data, and performance ratings.
+    Developers can retrieve complete goal details including owners, comments, and
+    progress, as well as automatically push real-time updates from external enterprise
+    applications into BetterWorks.
+  humanURL: https://developers.betterworks.com/
+  baseURL: https://app.betterworks.com/services/core
+  tags:
+  - Goals
+  - OKR
+  - Employee Data
+  - Feedback
+  - Calibration
+  - Performance Ratings
+  properties:
   - type: Documentation
-    url: https://developers.betterworks.com/
-  - type: GitHubOrg
-    url: https://github.com/BetterWorks
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/betterworks
-  - type: Blog
-    url: https://www.betterworks.com/magazine/
-  - type: Pricing
-    url: https://www.betterworks.com/plans
-  - type: StatusPage
-    url: https://www.betterworks.com/system-uptime-metrics/
-  - type: X
-    url: https://x.com/betterworks
-  - type: Plans
-    url: plans/betterworks-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/betterworks-rate-limits.yml
-  - type: FinOps
-    url: finops/betterworks-finops.yml
-  - type: BlogPosts
-    url: blogs/blogs.json
-  - type: JsonLdContext
-    url: json-ld/betterworks-context.jsonld
+    url: https://developers.betterworks.com/documentation/
+  - type: Support
+    url: https://developers.betterworks.com/support/
+  - url: graphql/betterworks-graphql.md
+    type: GraphQL
+common:
+- type: Website
+  url: https://www.betterworks.com/
+- type: Documentation
+  url: https://developers.betterworks.com/
+- type: GitHubOrg
+  url: https://github.com/BetterWorks
+- type: LinkedIn
+  url: https://www.linkedin.com/company/betterworks
+- type: Blog
+  url: https://www.betterworks.com/magazine/
+- type: Pricing
+  url: https://www.betterworks.com/plans
+- type: StatusPage
+  url: https://www.betterworks.com/system-uptime-metrics/
+- type: X
+  url: https://x.com/betterworks
+- type: Plans
+  url: plans/betterworks-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/betterworks-rate-limits.yml
+- type: FinOps
+  url: finops/betterworks-finops.yml
+- type: BlogPosts
+  url: blogs/blogs.json
+- type: JsonLdContext
+  url: json-ld/betterworks-context.jsonld
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

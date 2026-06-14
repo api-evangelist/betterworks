@@ -1,0 +1,902 @@
+"""
+BetterWorks Conceptual GraphQL Schema
+Derived from the BetterWorks REST API: https://developers.betterworks.com/
+Represents the continuous performance management platform data model.
+"""
+
+scalar DateTime
+scalar JSON
+
+# ─── Enumerations ────────────────────────────────────────────────────────────
+
+enum OKRType {
+  COMPANY
+  TEAM
+  INDIVIDUAL
+  DEPARTMENT
+}
+
+enum AlignmentType {
+  PARENT_CHILD
+  SUPPORTING
+  CROSS_TEAM
+}
+
+enum ReviewType {
+  SELF
+  PEER
+  MANAGER
+  UPWARD
+  THREE_SIXTY
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  EMPLOYEE
+  HR_ADMIN
+  EXECUTIVE
+}
+
+enum ProgressStatus {
+  ON_TRACK
+  AT_RISK
+  BEHIND
+  COMPLETED
+  NOT_STARTED
+  CANCELLED
+}
+
+enum PeriodStatus {
+  ACTIVE
+  CLOSED
+  UPCOMING
+  ARCHIVED
+}
+
+enum WebhookEventType {
+  GOAL_CREATED
+  GOAL_UPDATED
+  GOAL_COMPLETED
+  CHECKIN_COMPLETED
+  FEEDBACK_RECEIVED
+  PRAISE_SENT
+  REVIEW_SUBMITTED
+  PROGRESS_UPDATED
+}
+
+# ─── Users and Organization ───────────────────────────────────────────────────
+
+"""Core user identity within BetterWorks."""
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  displayName: String
+  avatarUrl: String
+  role: UserRole!
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: UserDetails
+  manager: Manager
+  team: Team
+  department: Department
+}
+
+"""Extended user profile including employment metadata."""
+type UserDetails {
+  id: ID!
+  user: User!
+  title: String
+  employeeId: String
+  hireDate: DateTime
+  location: String
+  timezone: String
+  bio: String
+  phoneNumber: String
+  slackHandle: String
+  linkedInUrl: String
+  customFields: JSON
+}
+
+"""Manager-subordinate relationship record."""
+type Manager {
+  id: ID!
+  user: User!
+  directReports: [User!]!
+  directReportCount: Int!
+}
+
+"""A group of users sharing goals or reporting structure."""
+type Team {
+  id: ID!
+  name: String!
+  description: String
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: TeamDetails
+  members: [User!]!
+  memberCount: Int!
+  lead: User
+  department: Department
+}
+
+"""Extended team metadata including hierarchy."""
+type TeamDetails {
+  id: ID!
+  team: Team!
+  parentTeam: Team
+  subTeams: [Team!]!
+  objectives: [Objective!]!
+  activePeriod: GoalPeriod
+  customFields: JSON
+}
+
+"""Organizational unit grouping teams and users."""
+type Department {
+  id: ID!
+  name: String!
+  code: String
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: DepartmentDetails
+  teams: [Team!]!
+  head: User
+}
+
+"""Extended department metadata."""
+type DepartmentDetails {
+  id: ID!
+  department: Department!
+  parentDepartment: Department
+  subDepartments: [Department!]!
+  memberCount: Int!
+  teamCount: Int!
+  customFields: JSON
+}
+
+"""Top-level organization configuration and settings."""
+type OrganizationDetails {
+  id: ID!
+  name: String!
+  domain: String
+  logoUrl: String
+  employeeCount: Int
+  industry: String
+  country: String
+  timezone: String
+  fiscalYearStart: String
+  currentPeriod: GoalPeriod
+  settings: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ─── OKRs and Goals ───────────────────────────────────────────────────────────
+
+"""Parent container for an objective with its key results."""
+type OKR {
+  id: ID!
+  type: OKRType!
+  owner: User!
+  team: Team
+  department: Department
+  period: GoalPeriod!
+  objective: Objective!
+  keyResults: [KeyResult!]!
+  progress: Progress!
+  alignments: [Alignment!]!
+  isPublic: Boolean!
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: OKRDetails
+}
+
+"""Extended OKR metadata including alignment and period."""
+type OKRDetails {
+  id: ID!
+  okr: OKR!
+  commentCount: Int!
+  likeCount: Int!
+  checkInCount: Int!
+  lastProgressUpdate: ProgressUpdate
+  tags: [String!]!
+  customFields: JSON
+  sharedWith: [User!]!
+}
+
+"""Qualitative goal statement."""
+type Objective {
+  id: ID!
+  title: String!
+  description: String
+  status: ProgressStatus!
+  owner: User!
+  okr: OKR!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: ObjectiveDetails
+}
+
+"""Extended objective metadata including owner, comments, and status."""
+type ObjectiveDetails {
+  id: ID!
+  objective: Objective!
+  comments: [String!]!
+  commentCount: Int!
+  likeCount: Int!
+  parentObjective: Objective
+  childObjectives: [Objective!]!
+  progress: Float!
+  dueDate: DateTime
+  completedAt: DateTime
+}
+
+"""Measurable outcome tied to an objective."""
+type KeyResult {
+  id: ID!
+  title: String!
+  description: String
+  currentValue: Float!
+  targetValue: Float!
+  startValue: Float
+  unit: String
+  progressPercentage: Float!
+  status: ProgressStatus!
+  owner: User!
+  objective: Objective!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: KeyResultDetails
+}
+
+"""Extended key result metadata with current and target values."""
+type KeyResultDetails {
+  id: ID!
+  keyResult: KeyResult!
+  progressUpdates: [ProgressUpdate!]!
+  lastUpdatedBy: User
+  lastUpdatedAt: DateTime
+  dueDate: DateTime
+  completedAt: DateTime
+  commentCount: Int!
+  milestones: [String!]!
+}
+
+"""Current progress state of a goal or key result."""
+type Progress {
+  id: ID!
+  percentage: Float!
+  status: ProgressStatus!
+  lastUpdated: DateTime!
+  lastUpdatedBy: User!
+  note: String
+}
+
+"""A recorded progress update event."""
+type ProgressUpdate {
+  id: ID!
+  previousValue: Float
+  newValue: Float!
+  progressPercentage: Float!
+  note: String
+  updatedBy: User!
+  createdAt: DateTime!
+  keyResult: KeyResult
+  okr: OKR
+}
+
+# ─── Alignment ────────────────────────────────────────────────────────────────
+
+"""Link between two OKRs or objectives."""
+type Alignment {
+  id: ID!
+  type: AlignmentType!
+  sourceOKR: OKR!
+  targetOKR: OKR!
+  createdBy: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: AlignmentDetails
+}
+
+"""Metadata about an alignment relationship."""
+type AlignmentDetails {
+  id: ID!
+  alignment: Alignment!
+  weight: Float
+  description: String
+  isActive: Boolean!
+}
+
+"""Aggregate alignment measurement for analytics."""
+type AlignmentMetric {
+  id: ID!
+  period: GoalPeriod!
+  organizationAlignmentScore: Float!
+  teamAlignmentRate: Float!
+  individualAlignmentRate: Float!
+  totalAlignments: Int!
+  crossTeamAlignments: Int!
+  calculatedAt: DateTime!
+}
+
+# ─── Check-Ins ────────────────────────────────────────────────────────────────
+
+"""A scheduled or ad-hoc check-in event between manager and employee."""
+type CheckIn {
+  id: ID!
+  employee: User!
+  manager: User!
+  scheduledAt: DateTime
+  completedAt: DateTime
+  isCompleted: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: CheckInDetails
+}
+
+"""Full check-in record including notes, status, and participants."""
+type CheckInDetails {
+  id: ID!
+  checkIn: CheckIn!
+  employeeNotes: String
+  managerNotes: String
+  goalsDiscussed: [OKR!]!
+  actionItems: [String!]!
+  mood: String
+  privateManagerNotes: String
+  nextCheckInDate: DateTime
+}
+
+# ─── Reviews and Feedback ─────────────────────────────────────────────────────
+
+"""A performance review instance."""
+type Review {
+  id: ID!
+  reviewee: User!
+  reviewer: User!
+  type: ReviewType!
+  cycle: ReviewCycle!
+  status: String!
+  submittedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: ReviewDetails
+}
+
+"""Extended review data including ratings and comments."""
+type ReviewDetails {
+  id: ID!
+  review: Review!
+  overallRating: Float
+  competencyRatings: JSON
+  responses: JSON
+  strengths: String
+  areasForGrowth: String
+  managerComments: String
+  calibratedRating: Float
+  isCalibratedRating: Boolean!
+}
+
+"""A defined review period such as annual or mid-year."""
+type ReviewCycle {
+  id: ID!
+  name: String!
+  type: ReviewType!
+  startDate: DateTime!
+  endDate: DateTime!
+  isActive: Boolean!
+  period: GoalPeriod
+  reviewCount: Int!
+  completionRate: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A request for feedback sent to a user."""
+type FeedbackRequest {
+  id: ID!
+  requestedBy: User!
+  requestedFrom: User!
+  subject: User
+  message: String
+  dueDate: DateTime
+  isAnonymous: Boolean!
+  isCompleted: Boolean!
+  response: FeedbackResponse
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A response to a feedback request."""
+type FeedbackResponse {
+  id: ID!
+  request: FeedbackRequest!
+  respondedBy: User!
+  content: String!
+  rating: Float
+  isAnonymous: Boolean!
+  submittedAt: DateTime!
+  isVisible: Boolean!
+}
+
+# ─── Recognition ──────────────────────────────────────────────────────────────
+
+"""A recognition message sent from one user to another."""
+type Praise {
+  id: ID!
+  sender: User!
+  recipient: User!
+  message: String!
+  badge: Badge
+  isPublic: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: PraiseDetails
+}
+
+"""Extended praise record with reactions and visibility."""
+type PraiseDetails {
+  id: ID!
+  praise: Praise!
+  likeCount: Int!
+  commentCount: Int!
+  sharedWith: [Team!]!
+  relatedGoal: OKR
+  hashtags: [String!]!
+}
+
+"""A named recognition award that can accompany praise."""
+type Badge {
+  id: ID!
+  name: String!
+  description: String
+  iconUrl: String
+  color: String
+  isActive: Boolean!
+  createdAt: DateTime!
+  awardCount: Int!
+}
+
+# ─── Periods ──────────────────────────────────────────────────────────────────
+
+"""The time window for a set of goals."""
+type GoalPeriod {
+  id: ID!
+  name: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  status: PeriodStatus!
+  isDefault: Boolean!
+  organization: OrganizationDetails!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: PeriodDetails
+}
+
+"""A generic time period reference."""
+type Period {
+  id: ID!
+  name: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  year: Int!
+  quarter: Int
+  isActive: Boolean!
+}
+
+"""Extended period metadata including start, end, and status."""
+type PeriodDetails {
+  id: ID!
+  period: GoalPeriod!
+  okrCount: Int!
+  activeUserCount: Int!
+  completionRate: Float!
+  averageProgress: Float!
+  subPeriods: [Period!]!
+}
+
+# ─── Integrations ─────────────────────────────────────────────────────────────
+
+"""A configured integration between BetterWorks and an external system."""
+type Integration {
+  id: ID!
+  name: String!
+  provider: String!
+  isEnabled: Boolean!
+  configuredBy: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastSyncAt: DateTime
+  syncStatus: String
+}
+
+"""Slack-specific integration configuration."""
+type SlackIntegration {
+  id: ID!
+  integration: Integration!
+  workspaceId: String!
+  workspaceName: String!
+  botUserId: String
+  notificationsEnabled: Boolean!
+  checkInRemindersEnabled: Boolean!
+  praiseChannelId: String
+  defaultChannelId: String
+}
+
+"""Jira-specific integration configuration."""
+type JiraIntegration {
+  id: ID!
+  integration: Integration!
+  jiraSiteUrl: String!
+  projectKeys: [String!]!
+  syncDirection: String!
+  issueTypeMapping: JSON
+  statusMapping: JSON
+  lastSyncedIssueCount: Int
+}
+
+"""Salesforce-specific integration configuration."""
+type SalesforceIntegration {
+  id: ID!
+  integration: Integration!
+  instanceUrl: String!
+  orgId: String!
+  syncObjects: [String!]!
+  fieldMapping: JSON
+  updateFrequency: String!
+  lastSyncedRecordCount: Int
+}
+
+"""Workday-specific integration configuration for HRIS sync."""
+type WorkdayIntegration {
+  id: ID!
+  integration: Integration!
+  tenantUrl: String!
+  syncUserProfiles: Boolean!
+  syncDepartments: Boolean!
+  syncManagementHierarchy: Boolean!
+  syncSchedule: String!
+  lastSyncedUserCount: Int
+  fieldMapping: JSON
+}
+
+# ─── Analytics ────────────────────────────────────────────────────────────────
+
+"""Rolled-up analytics across the organization."""
+type AggregateAnalytics {
+  id: ID!
+  period: GoalPeriod!
+  calculatedAt: DateTime!
+  engagement: EngagementMetric!
+  alignment: AlignmentMetric!
+  performance: PerformanceMetric!
+  totalUsers: Int!
+  activeUsers: Int!
+  activeUserRate: Float!
+}
+
+"""Measurement of user engagement with the platform."""
+type EngagementMetric {
+  id: ID!
+  period: GoalPeriod!
+  activeUserCount: Int!
+  activeUserRate: Float!
+  checkInCompletionRate: Float!
+  feedbackGivenCount: Int!
+  praiseGivenCount: Int!
+  goalUpdateFrequency: Float!
+  loginFrequency: Float!
+  calculatedAt: DateTime!
+}
+
+"""Measurement of performance outcomes."""
+type PerformanceMetric {
+  id: ID!
+  period: GoalPeriod!
+  averageGoalCompletion: Float!
+  onTrackRate: Float!
+  atRiskRate: Float!
+  behindRate: Float!
+  completedGoalCount: Int!
+  totalGoalCount: Int!
+  averageRating: Float
+  reviewCompletionRate: Float!
+  calculatedAt: DateTime!
+}
+
+"""A generated report artifact."""
+type Report {
+  id: ID!
+  name: String!
+  description: String
+  type: String!
+  period: GoalPeriod
+  generatedBy: User!
+  generatedAt: DateTime!
+  downloadUrl: String
+  expiresAt: DateTime
+  filters: JSON
+  rowCount: Int
+}
+
+"""Analytics query result container."""
+type Analytics {
+  id: ID!
+  queryType: String!
+  filters: JSON
+  results: JSON!
+  period: GoalPeriod
+  generatedAt: DateTime!
+  cacheExpiresAt: DateTime
+}
+
+# ─── API Access and Webhooks ──────────────────────────────────────────────────
+
+"""An API credential for programmatic access."""
+type APIKey {
+  id: ID!
+  name: String!
+  keyPrefix: String!
+  scopes: [String!]!
+  createdBy: User!
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+  expiresAt: DateTime
+  isActive: Boolean!
+  ipAllowlist: [String!]!
+}
+
+"""An OAuth or session token."""
+type Token {
+  id: ID!
+  tokenType: String!
+  scope: String!
+  expiresAt: DateTime!
+  createdAt: DateTime!
+  issuedTo: User!
+  clientId: String
+}
+
+"""A configured webhook endpoint for event delivery."""
+type Webhook {
+  id: ID!
+  name: String!
+  url: String!
+  events: [WebhookEventType!]!
+  isActive: Boolean!
+  secret: String
+  createdBy: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastDeliveredAt: DateTime
+  deliverySuccessRate: Float
+}
+
+"""A webhook event payload record."""
+type WebhookEvent {
+  id: ID!
+  webhook: Webhook!
+  eventType: WebhookEventType!
+  payload: JSON!
+  deliveredAt: DateTime
+  responseStatusCode: Int
+  isSuccessful: Boolean!
+  retryCount: Int!
+  createdAt: DateTime!
+}
+
+# ─── Connections (Pagination) ─────────────────────────────────────────────────
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+type OKRConnection {
+  edges: [OKREdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type OKREdge {
+  node: OKR!
+  cursor: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+# ─── Root Types ───────────────────────────────────────────────────────────────
+
+type Query {
+  """Fetch a user by ID."""
+  user(id: ID!): User
+
+  """List all users in the organization."""
+  users(first: Int, after: String, isActive: Boolean): UserConnection!
+
+  """Fetch an OKR by ID."""
+  okr(id: ID!): OKR
+
+  """List OKRs filtered by period, owner, or type."""
+  okrs(first: Int, after: String, periodId: ID, ownerId: ID, type: OKRType): OKRConnection!
+
+  """Fetch an objective by ID."""
+  objective(id: ID!): Objective
+
+  """Fetch a key result by ID."""
+  keyResult(id: ID!): KeyResult
+
+  """Fetch a check-in by ID."""
+  checkIn(id: ID!): CheckIn
+
+  """List check-ins for a user."""
+  checkIns(userId: ID!, first: Int, after: String): [CheckIn!]!
+
+  """Fetch a review by ID."""
+  review(id: ID!): Review
+
+  """List review cycles."""
+  reviewCycles(isActive: Boolean): [ReviewCycle!]!
+
+  """Fetch feedback requests for the current user."""
+  feedbackRequests(userId: ID!): [FeedbackRequest!]!
+
+  """Fetch praise sent or received by a user."""
+  praise(userId: ID!, direction: String): [Praise!]!
+
+  """List all badges."""
+  badges: [Badge!]!
+
+  """Fetch a goal period by ID."""
+  goalPeriod(id: ID!): GoalPeriod
+
+  """List all goal periods."""
+  goalPeriods(status: PeriodStatus): [GoalPeriod!]!
+
+  """Fetch aggregate analytics for a period."""
+  aggregateAnalytics(periodId: ID!): AggregateAnalytics
+
+  """Fetch a generated report by ID."""
+  report(id: ID!): Report
+
+  """Fetch department details."""
+  department(id: ID!): Department
+
+  """List all departments."""
+  departments(isActive: Boolean): [Department!]!
+
+  """Fetch team details."""
+  team(id: ID!): Team
+
+  """List all teams."""
+  teams(departmentId: ID, isActive: Boolean): [Team!]!
+
+  """Fetch organization details."""
+  organization: OrganizationDetails
+
+  """List configured webhooks."""
+  webhooks: [Webhook!]!
+
+  """List API keys."""
+  apiKeys: [APIKey!]!
+
+  """List configured integrations."""
+  integrations: [Integration!]!
+}
+
+type Mutation {
+  """Create a new OKR."""
+  createOKR(input: CreateOKRInput!): OKR!
+
+  """Update an existing OKR."""
+  updateOKR(id: ID!, input: UpdateOKRInput!): OKR!
+
+  """Update progress on a key result."""
+  updateProgress(keyResultId: ID!, value: Float!, note: String): ProgressUpdate!
+
+  """Create an alignment between two OKRs."""
+  createAlignment(sourceOKRId: ID!, targetOKRId: ID!, type: AlignmentType!): Alignment!
+
+  """Complete a check-in."""
+  completeCheckIn(id: ID!, input: CompleteCheckInInput!): CheckIn!
+
+  """Submit a review."""
+  submitReview(id: ID!, input: SubmitReviewInput!): Review!
+
+  """Send feedback."""
+  sendFeedback(input: SendFeedbackInput!): FeedbackRequest!
+
+  """Give praise to a user."""
+  givePraise(input: GivePraiseInput!): Praise!
+
+  """Create a webhook."""
+  createWebhook(input: CreateWebhookInput!): Webhook!
+
+  """Delete a webhook."""
+  deleteWebhook(id: ID!): Boolean!
+}
+
+# ─── Input Types ──────────────────────────────────────────────────────────────
+
+input CreateOKRInput {
+  type: OKRType!
+  title: String!
+  description: String
+  ownerId: ID!
+  teamId: ID
+  periodId: ID!
+  keyResults: [CreateKeyResultInput!]!
+  parentOKRId: ID
+  isPublic: Boolean
+}
+
+input CreateKeyResultInput {
+  title: String!
+  targetValue: Float!
+  startValue: Float
+  unit: String
+  ownerId: ID
+}
+
+input UpdateOKRInput {
+  title: String
+  description: String
+  isPublic: Boolean
+}
+
+input CompleteCheckInInput {
+  employeeNotes: String
+  managerNotes: String
+  actionItems: [String!]
+  mood: String
+  nextCheckInDate: DateTime
+}
+
+input SubmitReviewInput {
+  overallRating: Float
+  competencyRatings: JSON
+  responses: JSON
+  strengths: String
+  areasForGrowth: String
+}
+
+input SendFeedbackInput {
+  requestedFromId: ID!
+  subjectId: ID
+  message: String
+  dueDate: DateTime
+  isAnonymous: Boolean
+}
+
+input GivePraiseInput {
+  recipientId: ID!
+  message: String!
+  badgeId: ID
+  isPublic: Boolean
+  relatedGoalId: ID
+}
+
+input CreateWebhookInput {
+  name: String!
+  url: String!
+  events: [WebhookEventType!]!
+  secret: String
+}
