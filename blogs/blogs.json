@@ -10,31 +10,64 @@
       "title": "What HR Leaders Should Stop Doing Before Funding a Talent Transformation",
       "url": "https://www.betterworks.com/magazine/what-hr-leaders-should-stop-doing-before-funding-a-talent-transformation",
       "date": "2026-06-10",
-      "tags": ["HR", "Talent Management", "Transformation"]
+      "tags": [
+        "HR",
+        "Talent Management",
+        "Transformation"
+      ]
     },
     {
       "title": "Why HR Leaders Move Performance Management from Workday to Betterworks",
       "url": "https://www.betterworks.com/magazine/why-hr-leaders-switch-from-workday-to-betterworks",
       "date": "2026-06-10",
-      "tags": ["Performance Management", "Workday", "Integration"]
+      "tags": [
+        "Performance Management",
+        "Workday",
+        "Integration"
+      ]
     },
     {
       "title": "Betterworks Recognized on TIME's List of America's Top WorkTech Companies 2026",
       "url": "https://www.betterworks.com/magazine/betterworks-recognized-on-times-list-of-americas-top-worktech-companies-2026",
       "date": "2026-06-09",
-      "tags": ["Awards", "WorkTech", "Recognition"]
+      "tags": [
+        "Awards",
+        "WorkTech",
+        "Recognition"
+      ]
     },
     {
       "title": "Why HR Leaders Are Switching from Culture Amp to Betterworks for Performance Management",
       "url": "https://www.betterworks.com/magazine/why-hr-leaders-switch-from-culture-amp-to-betterworks",
       "date": "2026-05-01",
-      "tags": ["Performance Management", "Culture Amp", "HR"]
+      "tags": [
+        "Performance Management",
+        "Culture Amp",
+        "HR"
+      ]
     },
     {
-      "title": "CEO Doug Dennerline on Why Betterworks Acquired Rypple — and What It Means for the Future of Managing",
+      "title": "CEO Doug Dennerline on Why Betterworks Acquired Rypple \u2014 and What It Means for the Future of Managing",
       "url": "https://www.betterworks.com/magazine/why-betterworks-acquired-rypple",
       "date": "2026-05-01",
-      "tags": ["Acquisition", "Rypple", "Leadership", "Product"]
+      "tags": [
+        "Acquisition",
+        "Rypple",
+        "Leadership",
+        "Product"
+      ]
     }
-  ]
+  ],
+  "repo": "betterworks",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/betterworks",
+      "feed_url": "https://www.linkedin.com/company/betterworks",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
