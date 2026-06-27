@@ -75,7 +75,7 @@ common:
   url: finops/betterworks-finops.yml
 - type: BlogPosts
   url: blogs/blogs.json
-- type: JsonLdContext
+- type: JSONLDContext
   url: json-ld/betterworks-context.jsonld
 maintainers:
 - FN: Kin Lane
