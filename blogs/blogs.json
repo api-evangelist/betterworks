@@ -2,13 +2,14 @@
   "repo": "betterworks",
   "feeds": [
     {
-      "source": "https://www.betterworks.com/magazine/",
-      "feed_url": "",
-      "saved": 2,
-      "method": "agent-scrape"
+      "source": "https://www.linkedin.com/company/betterworks",
+      "feed_url": "https://www.linkedin.com/company/betterworks",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:29:00Z",
-  "post_count": 5,
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 7,
   "agent_pulled": "2026-06-27"
 }
