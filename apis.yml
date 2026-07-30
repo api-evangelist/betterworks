@@ -10,7 +10,19 @@ description: BetterWorks is an enterprise continuous performance management plat
   organizations starting at 500 employees, with robust API and integration capabilities
   included across all plans.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/betterworks.png
 url: https://raw.githubusercontent.com/api-evangelist/betterworks/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
