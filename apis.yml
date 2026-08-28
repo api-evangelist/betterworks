@@ -10,6 +10,17 @@ description: BetterWorks is an enterprise continuous performance management plat
   organizations starting at 500 employees, with robust API and integration capabilities
   included across all plans.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: unknown
