@@ -39,6 +39,17 @@ created: 2026-06-13
 modified: 2026-06-13
 specificationVersion: '0.23'
 tags:
+- OKRs
+- Performance Management
+- Goals
+- Employee Data
+- Human Resources
+- Enterprise
+- Feedback
+- Check-in
+- Continuous Performance
+- People Analytics
+tags_raw:
 - OKR
 - Performance Management
 - Goals
@@ -60,6 +71,13 @@ apis:
   humanURL: https://developers.betterworks.com/
   baseURL: https://app.betterworks.com/services/core
   tags:
+  - Goals
+  - OKRs
+  - Employee Data
+  - Feedback
+  - Calibration
+  - Performance Ratings
+  tags_raw:
   - Goals
   - OKR
   - Employee Data
