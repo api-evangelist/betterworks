@@ -1,0 +1,27 @@
+# Front Door AI Index — betterworks — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: betterworks
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.betterworks.com
+  final_host: www.betterworks.com
+  ownership: own
+  owner: betterworks
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 13
+  host_score: 13
+  density: 6.46
+  words: 2011
+  tiers:
+    agentic: 3
+    core: 10
+    model: 0
+  ambiguous: 24
+  top_terms:
+    intelligence: 24
+    AI: 10
+    MCP: 3
