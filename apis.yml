@@ -89,8 +89,6 @@ apis:
     url: https://developers.betterworks.com/documentation/
   - type: Support
     url: https://developers.betterworks.com/support/
-  - url: graphql/betterworks-graphql.md
-    type: GraphQL
 common:
 - type: DomainSecurity
   url: security/betterworks-domain-security.yml
