@@ -86,3 +86,28 @@ plans:
         description: Configurable engagement surveys with analytics.
       - name: Pulse Checks
         description: Lightweight pulse surveys for ongoing sentiment tracking.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Mid-Market
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Employee Engagement Standalone
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
