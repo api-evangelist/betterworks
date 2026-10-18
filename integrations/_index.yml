@@ -27,7 +27,7 @@
     - connectors/applications/betterworks
     vendor_link: https://www.betterworks.com/
     builder: Fivetran
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: betterworks-microsoft-teams-own
   label: Microsoft Teams (own)
