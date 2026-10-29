@@ -1,4 +1,4 @@
-# BetterWorks (betterworks)
+# BetterWorks
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,50 +66,115 @@
 
 BetterWorks is an enterprise continuous performance management platform that enables organizations to align, develop, and engage their workforce through OKR-based goal setting, check-ins, feedback, and calibration. The platform provides a REST API allowing developers to programmatically access and update goals, employee data, feedback, recognition, and performance ratings. API access supports integration with business-critical applications to automate progress tracking and synchronize workforce data across enterprise systems. BetterWorks serves mid-market and enterprise organizations starting at 500 employees, with robust API and integration capabilities included across all plans.
 
-**APIs.json:** https://raw.githubusercontent.com/api-evangelist/betterworks/refs/heads/main/apis.yml
+**Areas:** OKRs · Performance Management · Goals · Employee Data · Human Resources · Enterprise · Feedback · Check-in · Continuous Performance · People Analytics
 
-**Naftiko:** https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=betterworks-api-evangelist&utm_content=repo
+## BetterWorks on APIs.io
 
-## Tags
+Everything profiled for BetterWorks is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/betterworks/](https://apis.io/providers/betterworks/)** — or go straight to one of the APIs or properties below.
 
-OKR, Performance Management, Goals, Employee Data, HR, Enterprise, Feedback, Check-ins, Continuous Performance, People Analytics
+### APIs (1)
 
-## APIs
+- [BetterWorks API](https://apis.io/apis/betterworks/betterworks-api/) — The BetterWorks REST API enables programmatic access to goals, milestones, employee data, feedback, recognition, calibration data, and performance ratings.…
 
-| Name | Description | Human URL |
-|------|-------------|-----------|
-| BetterWorks API | REST API for goals, employee data, feedback, calibration, and performance ratings. | https://developers.betterworks.com/ |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Path |
-|----------|------|
-| Plans & Pricing | [plans/betterworks-plans-pricing.yml](plans/betterworks-plans-pricing.yml) |
-| Rate Limits | [rate-limits/betterworks-rate-limits.yml](rate-limits/betterworks-rate-limits.yml) |
-| FinOps | [finops/betterworks-finops.yml](finops/betterworks-finops.yml) |
+#### GraphQL (1)
 
-## Timestamps
+GraphQL schemas.
 
-| Field | Value |
-|-------|-------|
-| Created | 2026-06-13 |
-| Modified | 2026-06-13 |
+- [Moved to /providers/betterworks/](https://apis.io/graphqls/betterworks/betterworks-graphql/)
 
-## Common
+#### JSON-LD (1)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.betterworks.com/ |
-| Documentation | https://developers.betterworks.com/ |
-| GitHub Org | https://github.com/BetterWorks |
-| LinkedIn | https://www.linkedin.com/company/betterworks |
-| Blog | https://www.betterworks.com/magazine/ |
-| Pricing | https://www.betterworks.com/plans |
-| Status Page | https://www.betterworks.com/system-uptime-metrics/ |
-| X | https://x.com/betterworks |
+Linked-data contexts for the provider's vocabulary.
 
-## Maintainers
+- [Betterworks Context](https://apis.io/jsonld/betterworks/betterworks-context/)
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Betterworks Domain Security](https://apis.io/security/betterworks/betterworks-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Betterworks Plans Pricing](https://apis.io/plans/betterworks/betterworks-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Betterworks Rate Limits](https://apis.io/rate-limits/betterworks/betterworks-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Betterworks Finops](https://apis.io/finops/betterworks/betterworks-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.betterworks.com/)
+- [Documentation](https://developers.betterworks.com/)
+- [Pricing](https://www.betterworks.com/plans)
+- [Blog](https://www.betterworks.com/magazine/)
+- [Status](https://www.betterworks.com/system-uptime-metrics/)
+
+## API Evangelist rating
+
+**Kin Score 15.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 10.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 18.4 |
+
+**Agent readiness 0.6** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/betterworks/](https://apis.io/providers/betterworks/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BetterWorks: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/betterworks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
